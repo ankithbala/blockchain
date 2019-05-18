@@ -1,0 +1,175 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+
+        {% block head %}
+
+
+
+        <script>
+        {% include 'baseportal/scroll.js' %}
+        </script>
+        {% block navbar %}
+        <div class="navbar-wrapper" >
+            <div class="container-fluid">
+
+
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+
+            <a class="navbar-brand" href="#">Real Time Record Maintenance</a>
+          <!--<div class="container">
+                </div>-->
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+              <ul class="nav navbar-nav navbar-right" style="margin-right:1px">
+
+
+
+                            <li class="active"><a href="{% url 'baseportal:landrecord' %}"><span class="glyphicon glyphicon-file"></span> Land Records</a></li>
+                        <!--    <li><a href="#product1"><span class="glyphicon glyphicon-shopping-cart"></span> Product</a></li>
+                            <li><a href="#about"><i class="fa fa-users"></i> About</a></li>
+                            <li><a href="#contact"><i class="fa fa-address-card-o"></i> Contact</a></li>
+-->
+                    <!--        {% if user.is_authenticated %}
+                            <ul class="nav navbar-nav navbar-right">
+                             <li><a href="{% url 'accounts:signup' %}"> <span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+              <li><a href="{% url 'accounts:loginview' %}" style="margin-right: 25px;"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+
+
+
+
+
+                                 <li><a href="{% url 'accounts:signup' %}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+              <li><a href="{% url 'accounts:loginview' %}" style="margin-right: 25px;"><span class="glyphicon glyphicon-log-in" ></span> Login</a></li>
+                            </ul>
+                        {% endif %}-->
+
+
+              </ul>
+            </div>
+          </div>
+
+        </nav>
+
+        {% endblock %}
+
+
+        <div class="jumbotron text-center" style="height:270px;padding-top:60px;padding-bottom:25px">
+<img class="img-responsive" src="{% static 'nitte.png' %}" align="left" width="124" height="136">
+               <img class="img-responsive" src="{% static 'nittelogo1.png' %}" align="right" width="124" height="136">
+               <img class="img-responsive center-block" src="{% static 'Ktaka_logo.png' %}">
+
+            <h1>Challenge 5</h1>
+            <h3>Real Time Record Maintenance</h3>
+
+        </div>
+
+<!-- Description of Real Time Record Maintenance -->
+
+<div id="product" class="panel panel-info">
+      <div class="panel-heading">
+
+<p class="lead">Use cases:Land  Records  Management  Through  Use  of
+Blockchain</p>
+ </div>
+
+ <div class="panel-body">
+   <br>
+<p>
+<code>DESCRIPTION OF USE CASE</code>
+  <p>
+  The    Revenue    department    of    Government    of    Karnataka    maintains    land    records    in    digital
+  form
+</p>
+  <p>
+  The    land    records    are    important    from    a    the    perspective    of    a)
+  title    of    a    land    unit    needs    to    be
+  confirmed    with    one    owner    and    b)    there    needs    to    be    a    clear    trail    &    record    of    all    transactions    done
+  regarding    the    unit
+  </p>
+  <p>
+  The
+  land    record    are    used    by    various    other    departments/stakeholders    concerning    a    particular    land
+  e.g.    registrar    office    for    sale/registration,    banks/co
+  -­‐
+  operatives    for    farm    loans,    land    acquisition
+  department    for    village/town    extension,    roads,    culverts    etc.
+</p>
+  <p>
+  We
+  need    to    have    a    trustworthy    real
+  -­‐
+  time    record    maintenance    system    capturing    various    attributes
+  pertaining    to    a    land
+ </p>
+
+
+
+
+
+
+<div syle="align:'left' " ;class="container">
+ <a href="#demo1" class="btn btn-info" data-toggle="collapse">Know more</a>
+  <div id="demo1" class="collapse">
+<br>
+<code>AS-­IS SCENARIO:</code>
+<p>Record of rights, tenancy and crop (RTC) on a land in Karnataka is maintained on an online mutation application named BHOOMI
+Change to RTCs due to sale, partition, inheritance, pledge, release, government/court order etc. happen only on BHOOMI without anphysical record keeping/human intervention
+The mutation process is initiated at taluka level and then replicated at the state level to establish the record of rights (ROR) at a stalevel
+The state level information on land records is shared electronically with different stakeholders for various purposes –
+</p>
+<p>
+ Registration Department – The transaction to transfer the rights except inheritance happens in Sub Registrar Office. KAVERIsystem of the Stamps and Registration department – talks electronically to BHOOMI. This has not only helped prospective buyebut has also gone a long way in enhancing the credibility of the registration department
+</p>
+<p>
+ Banks and Co-­‐operative Institutions – Banks and co-­‐operative institutions are enabled to electronically raise digitally signed requefor pledge or release of any land. This has helped them to access the land records database for confirming ownership, extenowned by the farmer, other liabilities that farmer has and also monitor the status of requests raised by them
+</p>
+<p>
+ Land Acquiring Bodies – BHOOSWADEENA, an automated land acquisition system, talks electronically to BHOOMI, for variouactivities such as village/town extension, roads, culverts, reservoirs, canals, military camps, railways, industries etc., as needed bthe government
+</p>
+<p>
+ Survey Department – A pre-­‐mutation sketch is mandatory and no transaction in sub-­‐registrar offices can happen without the sketcMOJANI, a software for meant for this purpose, if fully integrated with BHOOMI to achieve this objective
+</p>
+<p>
+ Others – Crop details of ROR are used by department of Economics and Statistics, Agriculture and horticulture. Forest departmeuses ROR data for protecting forest land
+</p>
+<code>TO-­BE SCENARIO</code>
+<p>
+The information pertaining to a land record (ownership, extent of ownership, farm credit declaration, notification from land
+acquisition authorities, government/court orders etc.) shouldn’t be centralized, lying on a single/few servers under the
+ownership of only a few parties – BHOOMI, KAVERI, BHOOSWADEENA, MOJANI etc.
+</p>
+<p>
+The information should be readily available to all the interested parties (individuals, banks, registration department, survey
+department etc.), with no dependency on a particular stakeholder/owner or seeking information from one entity, with
+relevant rights to read/write the right set of information
+</p>
+<p>
+The authencity of the information in such a decentralized scenario is of utmost importance – in spite of the information lying
+in a decentralized manner, nobody should be able to modify/edit the information entered previously
+Any piece of information appended to the existing set should be agreeable to all the relevant stakeholders
+The transactions should happen on a real-­‐time basis, to avoid any situation of two transactions of opposite nature putting
+forth their claim on a single asset
+The transactions should be traceable and transparent – any changes made to land records should be traceable with the set
+of information attached at each step
+</p>
+
+   </div>
+</div>
+
+      </div>
+    </div>
+
+
+
+
+
+        {% endblock %}

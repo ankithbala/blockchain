@@ -1,0 +1,145 @@
+{% extends 'base.html' %}
+
+
+
+        {% block navbar %}
+        <div class="navbar-wrapper" >
+            <div class="container-fluid">
+
+
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+
+            <a class="navbar-brand" href="#">Real Time Record Maintenance</a>
+          <!--<div class="container">
+                </div>-->
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+              <ul class="nav navbar-nav navbar-right" style="margin-right:1px">
+
+
+
+                            <li class="active"><a href="{% url 'baseportal:homepage' %}"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+                        <!--    <li><a href="#product1"><span class="glyphicon glyphicon-shopping-cart"></span> Product</a></li>
+                            <li><a href="#about"><i class="fa fa-users"></i> About</a></li>
+                            <li><a href="#contact"><i class="fa fa-address-card-o"></i> Contact</a></li>
+-->
+                    <!--        {% if user.is_authenticated %}
+                            <ul class="nav navbar-nav navbar-right">
+                             <li><a href="{% url 'accounts:signup' %}"> <span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+              <li><a href="{% url 'accounts:loginview' %}" style="margin-right: 25px;"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+
+
+
+
+
+                                 <li><a href="{% url 'accounts:signup' %}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+              <li><a href="{% url 'accounts:loginview' %}" style="margin-right: 25px;"><span class="glyphicon glyphicon-log-in" ></span> Login</a></li>
+                            </ul>
+                        {% endif %}-->
+
+
+              </ul>
+            </div>
+          </div>
+
+        </nav>
+
+        {% endblock %}
+
+
+
+<div id="landrecord">
+</div>
+
+{% block content %}
+<script>
+function getDistrict(m)
+{
+	data={"district":m};
+	url="/Project/webapi/taluk/"
+
+	$.ajax({
+		method: "GET",
+	  dataType: "json",
+	  url: url,
+	  data: data,
+	  success: function(x){
+			htm="<option>Select Taluk</option>"
+			for (i in x){
+				htm+="<option value="+x[i].id+">"+x[i].name+"</option>"
+			}
+			document.getElementById('id_taluk').innerHTML=htm;
+		}
+	});
+}
+function getTaluk(htm)
+{
+
+	url="/Project/webapi/grampanchayat/"
+	data={"taluk":htm};
+
+	$.ajax({
+		method: "GET",
+		dataType: "json",
+		url: url,
+		data: data,
+		success: function(y){
+			non="<option>Select GP</option>"
+			for(i in y)
+			{
+				non+="<option value="+y[i].id+">"+y[i].name+"</option>"
+			}
+			document.getElementById('id_gram_panchayat').innerHTML=non;
+		}
+	});
+}
+</script>
+<form class="form-inline" method='post'>
+<br>
+<br>
+<br>
+<br>
+	<div clas="form-action">
+	{% csrf_token %}
+	<table class="table">{{form.as_table}}
+    </table>
+	<button type="submit" class="btn btn-success btn-sm ">Get Record</button>
+</div>
+</form>
+{% if result is not None %}
+{% if result.aadhar == 0 %}
+<p>Invalid Information</p>
+<script>alert("Invalid Record")</script>
+{% else %}
+<form class="form-inline" method='post'>
+<div clas="form-action">
+<table class="table">
+	<tr>
+		<th>Lot No</th>
+		<td>{{result.lotno}}</td>
+	</tr>
+	<tr>
+		<th>Name</th>
+		<td>{{result.name}}</td>
+	</tr>
+	<tr>
+		<th>AADHAR</th>
+		<td>{{result.aadhar}}</td>
+	</tr>
+	<tr>
+		<th>PAN</th>
+		<td>{{result.pan}}</td>
+	</tr>
+</table>
+</div>
+</form>
+{% endif %}
+{% endif %}
+{% endblock %}

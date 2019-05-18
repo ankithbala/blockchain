@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+<script>
+{% include 'baseportal/scroll.js' %}
+</script>
+{% block navbar %}
+<div class="navbar-wrapper" >
+    <div class="container-fluid">
+
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+
+    <a class="navbar-brand" href="#">Smart Water management</a>
+  <!--<div class="container">
+        </div>-->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+
+
+
+                    <li class="active"><a href="#home"><span class="glyphicon glyphicon-home"></span> Land Records</a></li>
+                <!--    <li><a href="#product1"><span class="glyphicon glyphicon-shopping-cart"></span> Product</a></li>
+                    <li><a href="#about"><i class="fa fa-users"></i> About</a></li>
+                    <li><a href="#contact"><i class="fa fa-address-card-o"></i> Contact</a></li>
+                    -->
+
+                    {% if user.is_authenticated %}
+                    <ul class="nav navbar-nav navbar-right">
+                     <li><a href="{% url 'accounts:signup' %}"> <span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li><a href="{% url 'accounts:loginview' %}" style="margin-right: 25px;"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+
+
+                   <!--     <ul class="dropdown-menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li class="dropdown-header">Nav header</li>
+                            <li><a href="#">Separated link</a></li>
+                            <li><a href="#">One more separated link</a></li>
+                        </ul>
+                    </ul>-->
+
+{% else %}
+
+                        <!--<li><a href="{% url 'accounts:loginview' %}">Log In</a></li>-->
+                         <li><a href="{% url 'accounts:signup' %}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li><a href="{% url 'accounts:loginview' %}" style="margin-right: 25px;"><span class="glyphicon glyphicon-log-in" ></span> Login</a></li>
+                    </ul>
+                {% endif %}
+
+
+        <!--<li><a href="#"><span class="glyphicon glyphicon-search"></span></a></li>-->
+      </ul>
+    </div>
+  </div>
+
+</nav>
+
+{% endblock %}
